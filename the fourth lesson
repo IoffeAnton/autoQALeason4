@@ -1,0 +1,72 @@
+// Task #1
+function arraySum(obj) {
+    let arr = Object.values(obj);
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    } return sum;
+}
+
+let testObject = {
+    key1: 10,
+    key2: 22,
+    key3: 34,
+};
+
+arraySum(testObject);
+
+
+
+// Task #2
+let ourArray = [];
+
+const foo = (arr) => {
+    return (objectToPush) => {
+        arr.push(objectToPush);
+        return arr;
+    }
+};
+
+const pushToOurArray = foo(ourArray);
+
+pushToOurArray('i');
+pushToOurArray('am');
+pushToOurArray(1337);
+pushToOurArray('patsan');
+
+console.log(ourArray);
+
+
+
+// Task #3
+const poo = (personInfo) => {
+    const { firstName, lastName, birthYear } = personInfo;
+    const age = new Date().getFullYear() - birthYear;
+    const fullName = `${firstName} ${lastName}`;
+    return {
+        fullName,
+        age,
+        ...personInfo
+    }
+};
+
+poo({firstName: 'Ivan', lastName: 'Ivanov', birthYear: 2000});
+
+
+
+// Optional
+function capital(string) {
+    let arr = string.split(' ');
+    let capitalArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        const word = arr[i];
+        if (word.toLowerCase().startsWith('w')) {
+            capitalArr.push(`W${word.slice(1)}`)
+        } else {
+            capitalArr.push(word)
+        }
+    }
+    return capitalArr.join(' ');
+}
+
+capital('we wish you a merry christmas');
